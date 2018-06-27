@@ -4,6 +4,7 @@ public class EmptyRule extends Rule implements RuleContract {
 
     @Override
     public boolean executeRules() {
+        System.out.println("Rule Executed");
         return true;
     }
 

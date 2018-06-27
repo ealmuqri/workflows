@@ -1,5 +1,6 @@
 package workflow_core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Step {
@@ -7,9 +8,9 @@ public class Step {
     private String ID;
     private String name;
     private StepType stepType;
-    private List<RuleContract> rules;
-    private List<RuleContract> preRunRules;
-    private List<RuleContract> postRunRules;
+    private List<RuleContract> rules = new ArrayList<>();
+    private List<RuleContract> preRunRules = new ArrayList<>();
+    private List<RuleContract> postRunRules = new ArrayList<>();
     private Role[] roles;
     private Boolean isBlocker;
     private Step defaultDestination;
@@ -18,6 +19,7 @@ public class Step {
         this.ID = ID;
         this.name = name;
         this.stepType = stepType;
+
     }
 
     public void runStep(){
@@ -36,6 +38,11 @@ public class Step {
         for (RuleContract ruleContract : postRunRules) {
             ruleContract.executeRules();
         }
+
+        /*
+        TODO:
+        Dispatch an event anyone interested. (Pub-Sub Model)
+         */
     }
 
     public void addRule(RuleContract rule){

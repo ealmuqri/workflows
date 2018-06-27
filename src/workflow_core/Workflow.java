@@ -1,14 +1,15 @@
 package workflow_core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Workflow {
     private String ID;
     private String name;
     private String description;
-    private List<Step> steps;
-    private List<Bridge> bridges;
-    private List<Object> workflowData;
+    private List<Step> steps = new ArrayList<>();
+    private List<Bridge> bridges = new ArrayList<>();
+    private List<Object> workflowData = new ArrayList<>();
     private Step currentStep;
 
     public Workflow(String ID, String name) {
@@ -76,6 +77,9 @@ public class Workflow {
 
     public void addStep(Step step){
         this.steps.add(step);
+        if(this.currentStep == null){
+            currentStep = step;
+        }
     }
 
     public void addBridge(Bridge bridge){

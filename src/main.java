@@ -7,13 +7,17 @@ public class main {
         initializing the workflow instance
          */
         Workflow workflowInstance = new Workflow("123","first Workflow");
-        Rule emptyRule = new EmptyRule("r123","emptyRule");
+        RuleContract emptyRule = new EmptyRule("r123","emptyRule");
         Step step1 = new Step("s1","step1",StepType.Human);
+        step1.addRule(emptyRule);
+        step1.addPostRunRule(emptyRule);
+        step1.addPreRunRule(emptyRule);
+        workflowInstance.addStep(step1);
 
 
 
         WorkflowRunner workflowRunner = new WorkflowRunner();
-        workflowRunner.executeNextStep(workflowInstance);
+        workflowRunner.executeCurrentStep(workflowInstance);
 
 
     }
