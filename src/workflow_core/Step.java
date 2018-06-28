@@ -22,7 +22,7 @@ public class Step {
 
     }
 
-    public void runStep(){
+    public void runStep() {
         /*
             1. Run Pre Run Rules.
             2. Run Rules.
@@ -45,15 +45,15 @@ public class Step {
          */
     }
 
-    public void addRule(RuleContract rule){
+    public void addRule(RuleContract rule) {
         this.rules.add(rule);
     }
 
-    public void addPreRunRule(RuleContract rule){
+    public void addPreRunRule(RuleContract rule) {
         this.preRunRules.add(rule);
     }
 
-    public void addPostRunRule(RuleContract rule){
+    public void addPostRunRule(RuleContract rule) {
         this.postRunRules.add(rule);
     }
 

@@ -10,7 +10,7 @@ public class EmptyRule extends Rule implements RuleContract {
 
 
     public EmptyRule(String ID, String name) {
-        this.ID=ID;
-        this.name=name;
+        this.ID = ID;
+        this.name = name;
     }
 }

@@ -75,14 +75,14 @@ public class Workflow {
     }
 
 
-    public void addStep(Step step){
+    public void addStep(Step step) {
         this.steps.add(step);
-        if(this.currentStep == null){
+        if (this.currentStep == null) {
             currentStep = step;
         }
     }
 
-    public void addBridge(Bridge bridge){
+    public void addBridge(Bridge bridge) {
         this.bridges.add(bridge);
     }
 

@@ -4,7 +4,7 @@ import workflow_core.Workflow;
 
 public class WorkflowRunner {
 
-    public void executeNextStep(Workflow workflow){
+    public void executeNextStep(Workflow workflow) {
         workflow.getCurrentStep().runStep();
     }
 
