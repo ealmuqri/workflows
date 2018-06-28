@@ -1,4 +1,8 @@
 import workflow_core.*;
+import workflow_rules.AttendenceRules;
+import workflow_rules.EmptyRule;
+import workflow_rules.Rule;
+import workflow_rules.SalaryRules;
 import workflow_runner.WorkflowRunner;
 
 public class main {
@@ -7,11 +11,22 @@ public class main {
         initializing the workflow instance
          */
         Workflow workflowInstance = new Workflow("123", "first Workflow");
-        RuleContract emptyRule = new EmptyRule("r123", "emptyRule");
+        Rule emptyRule = new EmptyRule("r123", "emptyRule");
+        Rule attendenceRule = new AttendenceRules("r1123", "Attendence Rules");
+        Rule salaryRule = new SalaryRules("r3213","Salary Rules");
+
+        // I don't want to end up creating 1000 classes for my rules!
+        /*
+        OPTIONS:
+        1. Create generic rules for Math, Dates, Strings ..etc and have them adhere to the interface.
+        2. Have one Big Rules file and let the invoker define what functions required to run in order.
+        3.
+         */
+
         Step step1 = new Step("s1", "step1", StepType.Human);
-        step1.addRule(emptyRule);
+        step1.addRule(attendenceRule);
         step1.addPostRunRule(emptyRule);
-        step1.addPreRunRule(emptyRule);
+        step1.addPreRunRule(salaryRule);
         workflowInstance.addStep(step1);
 
 

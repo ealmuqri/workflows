@@ -1,5 +1,7 @@
 package workflow_core;
 
+import workflow_rules.Rule;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +10,9 @@ public class Step {
     private String ID;
     private String name;
     private StepType stepType;
-    private List<RuleContract> rules = new ArrayList<>();
-    private List<RuleContract> preRunRules = new ArrayList<>();
-    private List<RuleContract> postRunRules = new ArrayList<>();
+    private List<Rule> rules = new ArrayList<>();
+    private List<Rule> preRunRules = new ArrayList<>();
+    private List<Rule> postRunRules = new ArrayList<>();
     private Role[] roles;
     private Boolean isBlocker;
     private Step defaultDestination;
@@ -29,14 +31,14 @@ public class Step {
             3. Run Post Run Rules
             4. Fire Conclusion Event.
          */
-        for (RuleContract ruleContract : preRunRules) {
-            ruleContract.executeRules();
+        for (Rule rule : preRunRules) {
+            rule.executeRules();
         }
-        for (RuleContract ruleContract : rules) {
-            ruleContract.executeRules();
+        for (Rule rule : rules) {
+            rule.executeRules();
         }
-        for (RuleContract ruleContract : postRunRules) {
-            ruleContract.executeRules();
+        for (Rule rule : postRunRules) {
+            rule.executeRules();
         }
 
         /*
@@ -45,15 +47,15 @@ public class Step {
          */
     }
 
-    public void addRule(RuleContract rule) {
+    public void addRule(Rule rule) {
         this.rules.add(rule);
     }
 
-    public void addPreRunRule(RuleContract rule) {
+    public void addPreRunRule(Rule rule) {
         this.preRunRules.add(rule);
     }
 
-    public void addPostRunRule(RuleContract rule) {
+    public void addPostRunRule(Rule rule) {
         this.postRunRules.add(rule);
     }
 
@@ -82,27 +84,27 @@ public class Step {
         this.stepType = stepType;
     }
 
-    public List<RuleContract> getRules() {
+    public List<Rule> getRules() {
         return rules;
     }
 
-    public void setRules(List<RuleContract> rules) {
+    public void setRules(List<Rule> rules) {
         this.rules = rules;
     }
 
-    public List<RuleContract> getPreRunRules() {
+    public List<Rule> getPreRunRules() {
         return preRunRules;
     }
 
-    public void setPreRunRules(List<RuleContract> preRunRules) {
+    public void setPreRunRules(List<Rule> preRunRules) {
         this.preRunRules = preRunRules;
     }
 
-    public List<RuleContract> getPostRunRules() {
+    public List<Rule> getPostRunRules() {
         return postRunRules;
     }
 
-    public void setPostRunRules(List<RuleContract> postRunRules) {
+    public void setPostRunRules(List<Rule> postRunRules) {
         this.postRunRules = postRunRules;
     }
 

@@ -1,11 +1,13 @@
 package workflow_core;
 
+import workflow_rules.Rule;
+
 public class Bridge {
     private String ID;
     private String name;
-    private RuleContract[] bridgeRuleContracts;
-    private RuleContract[] preRunRuleContracts;
-    private RuleContract[] postRunRuleContracts;
+    private Rule[] bridgeRules;
+    private Rule[] preRunRules;
+    private Rule[] postRunRules;
     private Path[] paths;
 
     public String getID() {
@@ -24,28 +26,28 @@ public class Bridge {
         this.name = name;
     }
 
-    public RuleContract[] getBridgeRuleContracts() {
-        return bridgeRuleContracts;
+    public Rule[] getBridgeRules() {
+        return bridgeRules;
     }
 
-    public void setBridgeRuleContracts(RuleContract[] bridgeRuleContracts) {
-        this.bridgeRuleContracts = bridgeRuleContracts;
+    public void setBridgeRules(Rule[] bridgeRules) {
+        this.bridgeRules = bridgeRules;
     }
 
-    public RuleContract[] getPreRunRuleContracts() {
-        return preRunRuleContracts;
+    public Rule[] getPreRunRules() {
+        return preRunRules;
     }
 
-    public void setPreRunRuleContracts(RuleContract[] preRunRuleContracts) {
-        this.preRunRuleContracts = preRunRuleContracts;
+    public void setPreRunRules(Rule[] preRunRules) {
+        this.preRunRules = preRunRules;
     }
 
-    public RuleContract[] getPostRunRuleContracts() {
-        return postRunRuleContracts;
+    public Rule[] getPostRunRules() {
+        return postRunRules;
     }
 
-    public void setPostRunRuleContracts(RuleContract[] postRunRuleContracts) {
-        this.postRunRuleContracts = postRunRuleContracts;
+    public void setPostRunRules(Rule[] postRunRules) {
+        this.postRunRules = postRunRules;
     }
 
     public Path[] getPaths() {
