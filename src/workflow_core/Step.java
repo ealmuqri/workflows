@@ -32,13 +32,13 @@ public class Step {
             4. Fire Conclusion Event.
          */
         for (Rule rule : preRunRules) {
-            rule.executeRules();
+            rule.executeRule();
         }
         for (Rule rule : rules) {
-            rule.executeRules();
+            rule.executeRule();
         }
         for (Rule rule : postRunRules) {
-            rule.executeRules();
+            rule.executeRule();
         }
 
         /*

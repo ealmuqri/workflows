@@ -1,5 +1,7 @@
 package workflow_rules;
 
+import java.util.List;
+
 public class EmptyRule implements Rule {
     private String id, name;
 
@@ -9,9 +11,14 @@ public class EmptyRule implements Rule {
     }
 
     @Override
-    public boolean executeRules() {
+    public boolean executeRule() {
         System.out.println("Rule Executed");
         return true;
+    }
+
+    @Override
+    public void executeRules(List<String> methods, List<Object> workflowData) {
+
     }
 
     @Override

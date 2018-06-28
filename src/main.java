@@ -5,6 +5,9 @@ import workflow_rules.Rule;
 import workflow_rules.SalaryRules;
 import workflow_runner.WorkflowRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class main {
     public static void main(String[] args) {
         /*
@@ -14,7 +17,12 @@ public class main {
         Rule emptyRule = new EmptyRule("r123", "emptyRule");
         Rule attendenceRule = new AttendenceRules("r1123", "Attendence Rules");
         Rule salaryRule = new SalaryRules("r3213","Salary Rules");
-
+        //((AttendenceRules) attendenceRule).executeMethods();
+        List<String> methods = new ArrayList<String>();
+        List<Object> workflowData = new ArrayList<Object>();
+        methods.add("sampleMethod");
+        workflowData.add("Essam");
+        attendenceRule.executeRules(methods,workflowData);
         // I don't want to end up creating 1000 classes for my rules!
         /*
         OPTIONS:

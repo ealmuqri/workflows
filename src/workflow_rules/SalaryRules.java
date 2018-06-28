@@ -1,5 +1,7 @@
 package workflow_rules;
 
+import java.util.List;
+
 public class SalaryRules implements Rule{
     private String id, name;
 
@@ -9,7 +11,7 @@ public class SalaryRules implements Rule{
     }
 
     @Override
-    public boolean executeRules() {
+    public boolean executeRule() {
         System.out.println("==== Salary Rules ====");
         System.out.println("Rule1: Checking Employee Salary?");
         System.out.println("-- Success");
@@ -18,6 +20,11 @@ public class SalaryRules implements Rule{
         System.out.println("Rule3: Checking Employee has loans?");
         System.out.println("-- Failure");
         return false;
+    }
+
+    @Override
+    public void executeRules(List<String> methods, List<Object> workflowData) {
+
     }
 
     @Override
