@@ -45,8 +45,7 @@ public class Step {
 
         System.out.println("========= STEP ("+name+") Finished =======");
         /*
-        TODO:
-        Dispatch an event anyone interested. (Pub-Sub Model)
+        TODO: Dispatch an event anyone interested. (Pub-Sub Model)
          */
     }
 

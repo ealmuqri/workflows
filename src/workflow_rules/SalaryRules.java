@@ -19,7 +19,7 @@ public class SalaryRules implements Rule{
         System.out.println("-- Success");
         System.out.println("Rule3: Checking Employee has loans?");
         System.out.println("-- Failure");
-        return false;
+        return true;
     }
 
     @Override

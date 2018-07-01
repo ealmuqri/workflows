@@ -45,11 +45,31 @@ public class Workflow {
         3.
          */
 
+
+
         Step step1 = new Step("s1", "step1", StepType.Human);
+        Step step2 = new Step("s2", "step2", StepType.Human);
+
+        // Creating Bridge //
+        Path path = new Path(step1,step2);
+        List<Path> paths = new ArrayList<>();
+        paths.add(path);
+        Bridge bridge = new Bridge("b123","bridge1",paths);
+        bridge.addBridgeRule(emptyRule);
+        bridge.addPostRunRule(emptyRule);
+        bridge.addPreRunRule(salaryRule);
+
+        // End Creating a Bridge //
         step1.addRule(attendanceRule);
         step1.addPostRunRule(emptyRule);
         step1.addPreRunRule(salaryRule);
+
+        step2.addRule(attendanceRule);
+        step2.addPostRunRule(emptyRule);
+        step2.addPreRunRule(salaryRule);
+
         workflowInstance.addStep(step1);
+        workflowInstance.addBridge(bridge);
 
         return workflowInstance;
     }
