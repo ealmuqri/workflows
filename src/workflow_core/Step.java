@@ -31,6 +31,8 @@ public class Step {
             3. Run Post Run Rules
             4. Fire Conclusion Event.
          */
+
+        System.out.println("========= STEP ("+name+") Started Running =======");
         for (Rule rule : preRunRules) {
             rule.executeRule();
         }
@@ -41,6 +43,7 @@ public class Step {
             rule.executeRule();
         }
 
+        System.out.println("========= STEP ("+name+") Finished =======");
         /*
         TODO:
         Dispatch an event anyone interested. (Pub-Sub Model)
