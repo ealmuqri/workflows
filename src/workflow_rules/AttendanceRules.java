@@ -4,10 +4,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
-public class AttendenceRules implements Rule {
+public class AttendanceRules implements Rule {
     private String id, name;
 
-    public AttendenceRules(String id, String name) {
+    public AttendanceRules(String id, String name) {
         this.id = id;
         this.name = name;
     }
