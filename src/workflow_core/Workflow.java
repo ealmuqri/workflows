@@ -1,5 +1,11 @@
 package workflow_core;
 
+import com.sun.corba.se.spi.orbutil.threadpool.Work;
+import workflow_rules.AttendanceRules;
+import workflow_rules.EmptyRule;
+import workflow_rules.Rule;
+import workflow_rules.SalaryRules;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +18,40 @@ public class Workflow {
     private List<Object> workflowData = new ArrayList<>();
     private Step currentStep;
 
+    public Workflow(){
+
+    }
+
     public Workflow(String ID, String name) {
         this.ID = ID;
         this.name = name;
+    }
+
+    public Workflow contructWorkflow(String id, String name){
+        Workflow workflowInstance = new Workflow(id, name);
+        Rule emptyRule = new EmptyRule("r123", "emptyRule");
+        Rule attendanceRule = new AttendanceRules("r1123", "Attendence Rules");
+        Rule salaryRule = new SalaryRules("r3213","Salary Rules");
+        List<String> methods = new ArrayList<String>();
+        List<Object> workflowData = new ArrayList<Object>();
+        methods.add("sampleMethod");
+        workflowData.add("Essam");
+        attendanceRule.executeRules(methods,workflowData);
+        // I don't want to end up creating 1000 classes for my rules!
+        /*
+        OPTIONS:
+        1. Create generic rules for Math, Dates, Strings ..etc and have them adhere to the interface.
+        2. Have one Big Rules file and let the invoker define what functions required to run in order.
+        3.
+         */
+
+        Step step1 = new Step("s1", "step1", StepType.Human);
+        step1.addRule(attendanceRule);
+        step1.addPostRunRule(emptyRule);
+        step1.addPreRunRule(salaryRule);
+        workflowInstance.addStep(step1);
+
+        return workflowInstance;
     }
 
     public List<Step> getSteps() {
